@@ -1,6 +1,8 @@
 var canvas = document.getElementById('cherryBlossomCanvas');
 var ctx = canvas.getContext('2d');
 
+
+
 function adjustCanvasForHighDPI() {
     var dpr = window.devicePixelRatio || 1;
     var rect = canvas.getBoundingClientRect();
@@ -148,6 +150,33 @@ function init() {
     generateBlossoms();
     animate();
 }
+
+
+function startAllBlossomsRotating() {
+    blossoms.forEach(function(blossom) {
+        if (!blossom.rotating) {
+            blossom.rotating = true;
+            blossom.rotationSpeed = blossom.speedIncrement;
+            blossom.startTime = Date.now(); // 设置开始旋转的时间
+
+            // 激活辉光效果
+            blossom.emitMist = true;
+            blossom.mistOpacity = 0;
+            blossom.mistSize = 30; // 辉光大小
+            blossom.mistFadeStartTime = 0; // 重置辉光动画计时器
+
+            // 设置辉光效果在6秒后开始消失
+            setTimeout(function() {
+                blossom.emitMist = false;
+            }, 6000);
+        }
+    });
+}
+
+// 确保canvas元素和按钮元素已在DOM中
+document.getElementById('rotateButton').addEventListener('click', function() {
+    startAllBlossomsRotating(); // 启动所有樱花的旋转和辉光效果
+});
 
 init();
 

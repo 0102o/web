@@ -7,5 +7,35 @@ body {
     top: 0;
     left: 0;
     z-index: -1; /* 确保画布在底层 */
-/* } 
-/*  
+
+ 
+
+
+
+    #rotateButton {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #EDCFAB;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        z-index: 100; /* 确保按钮在樱花上层 */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #rotateButton:hover {
+        background-color: #f9a647;
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    /* 画布样式 */
+    #cherryBlossomCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1; /* 确保画布在底层 */
+    }
+
+    
